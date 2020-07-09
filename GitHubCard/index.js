@@ -67,20 +67,62 @@ function cardMaker (cardDataObj){
 
   //creating elements
   const card = document.createElement('div')
-  const profileImage = card.createElement('img')
-  const cardInfo = card.createElement('div')
-  const name = card.createElement('h3')
-  const userName = card.createElement('p')
-  const location = card.createElement('p')
-  const profile = card.createElement('p')
-  const githubAddress = profile.createElement('a')
-  const followers = card.createElement('p')
-  const following = card.createElement('p')
-  const bio = card.createElement('p')
+  const profileImage = document.createElement('img')
+  const cardInfo = document.createElement('div')
+  const name = document.createElement('h3')
+  const userName = document.createElement('p')
+  const location = document.createElement('p')
+  const profile = document.createElement('p')
+  const githubAddress = document.createElement('a')
+  const followers = document.createElement('p')
+  const following = document.createElement('p')
+  const bio = document.createElement('p')
 
-  //assigning classes
+  //setting up structure
 
-  //assigning text
+  card.appendChild(profileImage)
+  card.appendChild(cardInfo)
+  card.appendChild(name)
+  card.appendChild(userName)
+  card.appendChild(location)
+  card.appendChild(profile)
+  profile.appendChild(githubAddress)
+  card.appendChild(followers)
+  card.appendChild(following)
+  card.appendChild(bio)
+
+  //assigning element attributes and content
+  card.className = 'card'
+  profileImage.src = ""
+  cardInfo.className = 'card-info'
+  name.className = 'name'
+  userName.className = 'username'
+  location.textContent = `Location: ${cardDataObj.location}`
+  profile.textContent = `Profile:`
+  githubAddress.textContent = cardDataObj.url
+  
+
+  
+/*
+  STEP 3: Create a function that accepts a single object as its only argument.
+    Using DOM methods and properties, create and return the following markup:
+
+    <div class="card">
+      <img src={image url of user} />
+      <div class="card-info">
+        <h3 class="name">{users name}</h3>
+        <p class="username">{users user name}</p>
+        <p>Location: {users location}</p>
+        <p>Profile:
+          <a href={address to users github page}>{address to users github page}</a>
+        </p>
+        <p>Followers: {users followers count}</p>
+        <p>Following: {users following count}</p>
+        <p>Bio: {users bio}</p>
+      </div>
+    </div>
+*/
+
 
   return card
 }
