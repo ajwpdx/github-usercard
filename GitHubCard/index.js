@@ -10,12 +10,12 @@ axios.get('https://api.github.com/users/ajwpdx')
     .then( response => {
         response.data
         console.log(response.data)
-
     })
     .catch( err => {
-        console.log(err.data)
+        console.log('api not linked')
     })
 
+    
 
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
@@ -62,6 +62,28 @@ const followersArray = [];
       </div>
     </div>
 */
+
+function cardMaker (cardDataObj){
+
+  //creating elements
+  const card = document.createElement('div')
+  const profileImage = card.createElement('img')
+  const cardInfo = card.createElement('div')
+  const name = card.createElement('h3')
+  const userName = card.createElement('p')
+  const location = card.createElement('p')
+  const profile = card.createElement('p')
+  const githubAddress = profile.createElement('a')
+  const followers = card.createElement('p')
+  const following = card.createElement('p')
+  const bio = card.createElement('p')
+
+  //assigning classes
+
+  //assigning text
+
+  return card
+}
 
 /*
   List of LS Instructors Github username's:
