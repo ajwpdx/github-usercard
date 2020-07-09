@@ -4,6 +4,19 @@
     https://api.github.com/users/<your name>
 */
 
+import axios from 'axios'
+
+axios.get('https://api.github.com/users/ajwpdx')
+    .then( response => {
+        response.data
+        console.log(response.data)
+
+    })
+    .catch( err => {
+        console.log(err.data)
+    })
+
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
