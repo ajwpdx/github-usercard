@@ -2,15 +2,19 @@ import axios from 'axios'
 
 const cards = document.querySelector('.cards')
 
+//pulling my user data from the API and adding it to the DOM
+
 axios.get('https://api.github.com/users/ajwpdx')
-    .then( response => {
+    .then(response => {
         cards.appendChild(cardMaker(response))
-        console.log(response.data)
+        console.log(response)
     })
     .catch( err => {
         console.log('error!')
     })
 
+
+//array of followers
 const followersArray = [
   'tetondan',
   'dustinmyers',
@@ -19,7 +23,9 @@ const followersArray = [
   'bigknell'
 ];
 
-followersArray.forEach(user => {
+//function to get followers from array
+function getFollowers(array){
+  array.forEach(user => {
   axios.get(`https://api.github.com/users/${user}`)
   .then( response => {
     cards.appendChild(cardMaker(response))
@@ -28,8 +34,45 @@ followersArray.forEach(user => {
 .catch( err => {
     console.log('error!')
 })
-})
+})}
 
+
+// getFollowers(followersArray)
+
+
+//stretch goal
+function getFollowing(userName){
+  axios.get(`https://api.github.com/users/${userName}/following`)
+  .then(response => {
+    let followingArray = response.data
+    console.log(followingArray)
+    followingArray.forEach(user => {
+      axios.get(`https://api.github.com/users/${user.login}`)
+      .then( response => {
+        cards.appendChild(cardMaker(response))
+        console.log(response.data)
+    })
+    .catch( err => {
+        console.log('error!')
+    })
+    })
+
+  }).catch( err => {
+    console.log('mistake!')
+  })
+
+  console.log(followingArray)
+
+
+}
+
+getFollowing('ajwpdx')
+
+
+//https://api.github.com/users/ajwpdx/following
+
+
+//function to create new cards
 function cardMaker (cardDataObj){
 
   //creating elements
