@@ -41,7 +41,13 @@ axios.get('https://api.github.com/users/ajwpdx')
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+// const followersArray = [
+//     tetondan,
+//     dustinmyers,
+//     justsml,
+//     luishrd,
+//     bigknell
+// ];
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -93,29 +99,25 @@ function cardMaker (cardDataObj){
 
   //assigning element attributes and content
   card.className = 'card'
-  profileImage.src = ""
+  profileImage.setAttribute('src', cardDataObj.avatar_url)
   cardInfo.className = 'card-info'
   name.className = 'name'
+  name.textContent = cardDataObj.name
   userName.className = 'username'
+  userName.textContent = cardDataObj.login
   location.textContent = `Location: ${cardDataObj.location}`
-  profile.textContent = `Profile:`
-  githubAddress.textContent = cardDataObj.url
-  
+  profile.textContent = `Profile: `
+  githubAddress.textContent = cardDataObj.html_url
+  githubAddress.setAttribute('href', cardDataObj.html_url)
+  followers.textContent = `Followers: ${cardDataObj.followers}`
+  following.textContent = `Following: ${cardDataObj.following}`
+  bio.textContent = cardDataObj.bio
 
-  
+ 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
     Using DOM methods and properties, create and return the following markup:
 
-    <div class="card">
-      <img src={image url of user} />
-      <div class="card-info">
-        <h3 class="name">{users name}</h3>
-        <p class="username">{users user name}</p>
-        <p>Location: {users location}</p>
-        <p>Profile:
-          <a href={address to users github page}>{address to users github page}</a>
-        </p>
         <p>Followers: {users followers count}</p>
         <p>Following: {users following count}</p>
         <p>Bio: {users bio}</p>
